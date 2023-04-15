@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import LeftContent from './LeftContent';
-import RightContent from './RightContent';
+import RightContent from './RightContent/RightContent';
 class Content extends Component {
     render() {
         return (

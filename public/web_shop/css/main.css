@@ -16,6 +16,9 @@ body {
 ul li {
   list-style: none;
 }
+.tab-content .active {
+  display: none;
+}
 
 a:hover {
 outline: none;

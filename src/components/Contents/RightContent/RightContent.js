@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { getData } from './data';
-import ShowCard from './ShowCard/ShowCard';
+import { getData } from '../data';
+import ShowCard from '../ShowCard/ShowCard';
 
 class RightContent extends Component {
     render() {
