@@ -3,9 +3,7 @@ import { getData } from './data';
 import Show from './show';
 
 function Content() {
-        // console.log(getData)
         const datas = getData();
-
         const [drinker, setDrinker] = useState({
             name: '',
             price: 0,
@@ -17,7 +15,7 @@ function Content() {
                 alert('Vui lòng chọn đồ uống');
             }
             else {
-                check(drinker.name);
+                
                 if (drinker.money == 0) {
                     alert('Vui lòng nhập số tiền');
                 }
@@ -31,16 +29,17 @@ function Content() {
                 alert('Về nhà lấy tiền gấp');
             }
             else {
-                alert('Đồ uống của bạn là: ' + drinker.name + '\n Số tiền dư là: ' + money-(drinker.price) + 'đ');
+                alert('Đồ uống của bạn là: ' + (drinker.name)+'\n Số tiền dư là: ' + (money-(drinker.price)) + 'đ');
             }
         }
-        var handleInputChange = async(event) => {
+        var handleInputChange = (event) => {
             let key = event.target.name;
             let val = event.target.value;
-            setDrinker({[key]: val});          
-            check(val);
+            setDrinker( (drinker) =>({
+                ...drinker, [key]: val}) )
+            check(drinker.name);         
         }
-        console.log(drinker);
+        
         const check = (name) => {
             for (let i = 0; i < datas.length; i++) {
                 if (datas[i].name == name) {
@@ -52,7 +51,6 @@ function Content() {
                 }
             }
         }
-
         return (
             <div className='form'>
                 <h1>Menu</h1>
@@ -68,10 +66,10 @@ function Content() {
                     }
                     </table>
                 </div>
-                <h3 className="text-center">KẾT QUẢ</h3>
+                <h3 className="text-center">ORDER ĐỒ UỐNG</h3>
                 <form className='was-validated'>
                     <div className='from-group'>
-                        <label>Chọn đồ uống</label>
+                        <label>Chọn đồ uống: </label>
                         <select 
                             name='name'
                             type='text'
