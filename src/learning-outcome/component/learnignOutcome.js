@@ -1,3 +1,4 @@
+import { wait } from '@testing-library/user-event/dist/utils';
 import React, { Component } from 'react';
 
 class Score extends Component {
@@ -19,33 +20,28 @@ class Score extends Component {
         let val = event.target.value;
 
         this.setState({[key]: val});
+    };
+   
+    avg = () => {
         this.setState((state)=>({
             avg: parseFloat((parseFloat(state.hk1) + parseFloat(state.hk2))/2),
         }));
-        this.setResult();
-        this.setXL();
-
-    };
-   
+    }
     handleSubmit = (event)=>{
         event.preventDefault ();
-        alert("Ban la hoc sinh : " + this.state.xl);
-
+        this.avg();
+        this.setResult();
+        this.setXL();      
     };
     setResult =()=>{
-        if(this.state.avg > 4,5)this.setState({result:"Được lên lớp"});
+        if(this.state.avg > 4.5)this.setState({result:"Được lên lớp"});
         else this.setState({result:"Ở lại lớp"});
     };
     setXL =()=>{
-        // if (this.state.avg<4,5) this.setState({xl:"Yếu"});
-        // else if (this.state.avg<6,5)this.setState({xl:"Trung Bình"});
-        // else if (this.state.avg<8)this.setState({xl:"Khá"});
-        // else if (this.state.avg<9)this.setState({xl:"Giỏi"});
-        // else if (this.state.avg<10)this.setState({xl:"Xuất sắc"});
-        if (this.state.avg<4,5) {
+        if (this.state.avg<4.5) {
             this.setState({xl:"Yếu"});
         }
-        else if (this.state.avg<6,5) {
+        else if (this.state.avg<6.5) {
             this.setState({xl:"Trung Bình"});
         }
         else if (this.state.avg<8) {
